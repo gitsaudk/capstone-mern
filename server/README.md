@@ -37,6 +37,16 @@ For development with automatic restarts:
 npm run dev
 ```
 
+## Deploy on Render
+
+Use `server` as the service root directory, `npm install` as the build command,
+and `npm start` as the start command. Do not use `npm run dev` in production;
+it requires the development-only `nodemon` package.
+
+Add `MONGO_URI`, `JWT_SECRET`, `JWT_EXPIRE`, and `CLIENT_URL` as environment
+variables in the Render dashboard. The repository also includes a
+`render.yaml` blueprint with these settings.
+
 The API runs at `http://localhost:3000` by default.
 
 ## Seed Database
