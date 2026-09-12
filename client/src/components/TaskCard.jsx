@@ -88,7 +88,18 @@ export default function TaskCard({ task, onUpdate, onDelete, isBusy }) {
             <option value="medium">Medium</option>
             <option value="high">High</option>
           </select>
+          <input
+            type="date"
+            name="dueDate"
+            value={draft.dueDate}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            aria-label="Due date"
+            aria-invalid={Boolean(errors.dueDate && touched.dueDate)}
+            className={errors.dueDate && touched.dueDate ? "input-error" : ""}
+          />
         </div>
+        {errors.dueDate && touched.dueDate && <span className="field-error">{errors.dueDate}</span>}
         <div className="card-actions">
           <button onClick={handleSave} disabled={saving}>{saving ? "Saving..." : "Save"}</button>
           <button onClick={handleCancel} className="btn-ghost">Cancel</button>

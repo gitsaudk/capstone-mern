@@ -1,7 +1,10 @@
 const logger = (req, res, next) => {
+  if (req.path === "/api/health") {
+    return next();
+  }
+
   const start = Date.now();
 
-  // 'finish' fires when the response has been fully sent
   res.on("finish", () => {
     const duration = Date.now() - start;
     console.log(

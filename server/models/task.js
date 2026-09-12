@@ -5,11 +5,13 @@ const taskSchema = new mongoose.Schema(
     title: {
       type: String,
       required: [true, "Title is required"],
+      minlength: [3, "Title must be at least 3 characters"],
+      maxlength: [100, "Title must be under 100 characters"],
       trim: true
     },
     description: {
       type: String,
-      required: [true, "Description is required"],
+      maxlength: [500, "Description must be under 500 characters"],
       default: "",
       trim: true
     },
@@ -25,8 +27,7 @@ const taskSchema = new mongoose.Schema(
       default: "medium"
     },
     dueDate: {
-      type: Date,
-      required: [true, "Due date is required"]
+      type: Date
     },
     user: {
       type: mongoose.Schema.Types.ObjectId,
